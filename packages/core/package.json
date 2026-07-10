@@ -1,0 +1,15 @@
+{
+  "name": "@notifykit/core",
+  "version": "0.1.0",
+  "description": "Notification dispatcher: in-app record first (source of truth), then per-channel fan-out (push/email/SMS/realtime) with error isolation. Seams: NotificationStore, PreferenceResolver, TemplateRenderer, channel senders. Includes structural FCM/SMTP/Twilio/Socket.IO adapters (zero deps).",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "notifykit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared notification toolkit — one notify() fan-out across the channels every app uses: in-app records (unread/read), FCM push, email, SMS and Socket.IO realtime. Storage/delivery are seams; templates and preferences stay app-side.",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "setup": "npm install -w @notifykit/core -w @notifykit/express && npm run build",
+    "build": "npm run build -w @notifykit/core -w @notifykit/express",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "demo": "npm run dev -w @notifykit/demo-server"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2",
+    "vitest": "^3.2.0"
+  }
+}

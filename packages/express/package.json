@@ -1,0 +1,18 @@
+{
+  "name": "@notifykit/express",
+  "version": "0.1.0",
+  "description": "Express 4/5 handlers for the in-app notification endpoints every app exposes: list, unread count, mark read, mark all read. Envelope-agnostic, structural typing.",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@notifykit/core": "0.1.0"
+  }
+}
