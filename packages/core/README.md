@@ -1,11 +1,11 @@
-# @notifykit/core
+# @aymenkits/notify-core
 
 One notify(userIds, event) fan-out: in-app record written FIRST (source of truth for the bell/unread badge), then push/email/SMS/realtime with per-channel error isolation. Templates and preferences stay app-side via seams.
 
 ## Install
 
 ```bash
-npm install @notifykit/core
+npm install @aymenkits/notify-core
 ```
 
 Installs with it: nothing else — zero dependencies.
@@ -24,7 +24,7 @@ app implements on its own stack.
 ## Quick example
 
 ```ts
-import { createNotifier, fcmPushSender, socketIoEmitter } from '@notifykit/core'
+import { createNotifier, fcmPushSender, socketIoEmitter } from '@aymenkits/notify-core'
 
 const notifier = createNotifier({ store, render,
   channels: { push: fcmPushSender(messaging, tokenStore), realtime: socketIoEmitter(io) } })
@@ -33,7 +33,7 @@ await notifier.notify(userId, { type: 'order.accepted', data: { orderId } })
 
 ## Pairs with
 
-- `@reviewkit/core` and `@chatkit/core` accept this Notifier as their `notifier` parameter as-is
+- `@aymenkits/review-core` and `@aymenkits/chat-core` accept this Notifier as their `notifier` parameter as-is
 
 Kits pair **by shape, never by import** — pass the sibling kit, your own
 service, or a stub in tests.

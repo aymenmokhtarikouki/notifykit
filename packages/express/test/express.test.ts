@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createInMemoryNotificationStore } from '@notifykit/core'
+import { createInMemoryNotificationStore } from '@aymenkits/notify-core'
 import { createNotificationHandlers } from '../src/index'
 
 function mockRes() {

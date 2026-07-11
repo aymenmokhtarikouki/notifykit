@@ -1,5 +1,5 @@
 {
-  "name": "@notifykit/demo-server",
+  "name": "@aymenkits/notify-demo-server",
   "version": "0.1.0",
   "private": true,
   "description": "Demo: notify() fan-out with console channels + the standard notification endpoints (x-user header stands in for auth).",
@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@notifykit/core": "1.0.0",
-    "@notifykit/express": "1.0.0",
+    "@aymenkits/notify-core": "1.0.0",
+    "@aymenkits/notify-express": "1.0.0",
     "express": "^4.21.2"
   },
   "devDependencies": {

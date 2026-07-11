@@ -9,11 +9,11 @@
     "examples/*"
   ],
   "scripts": {
-    "setup": "npm install --include-workspace-root -w @notifykit/core -w @notifykit/express && npm run build",
-    "build": "npm run build -w @notifykit/core -w @notifykit/express",
+    "setup": "npm install --include-workspace-root -w @aymenkits/notify-core -w @aymenkits/notify-express && npm run build",
+    "build": "npm run build -w @aymenkits/notify-core -w @aymenkits/notify-express",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "vitest run",
-    "demo": "npm run dev -w @notifykit/demo-server"
+    "demo": "npm run dev -w @aymenkits/notify-demo-server"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

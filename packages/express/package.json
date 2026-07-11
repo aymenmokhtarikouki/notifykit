@@ -1,5 +1,5 @@
 {
-  "name": "@notifykit/express",
+  "name": "@aymenkits/notify-express",
   "version": "1.0.0",
   "description": "Express 4/5 handlers for the in-app notification endpoints every app exposes: list, unread count, mark read, mark all read. Envelope-agnostic, structural typing.",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@notifykit/core": "1.0.0"
+    "@aymenkits/notify-core": "1.0.0"
   },
   "publishConfig": {
     "access": "public"

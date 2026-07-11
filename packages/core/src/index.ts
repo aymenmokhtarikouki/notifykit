@@ -1,5 +1,5 @@
 /**
- * @notifykit/core — one notify(), every channel.
+ * @aymenkits/notify-core — one notify(), every channel.
  *
  * Quick start:
  *   const notifier = createNotifier({

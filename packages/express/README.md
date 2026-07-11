@@ -1,14 +1,14 @@
-# @notifykit/express
+# @aymenkits/notify-express
 
 Express 4/5 handlers for the standard in-app notification endpoints: list, unread count, mark read, mark all read. Envelope- and auth-agnostic.
 
 ## Install
 
 ```bash
-npm install @notifykit/express
+npm install @aymenkits/notify-express
 ```
 
-Installs with it: `@notifykit/core` (automatic dependency).
+Installs with it: `@aymenkits/notify-core` (automatic dependency).
 
 ## You provide
 
@@ -22,7 +22,7 @@ app implements on its own stack.
 ## Quick example
 
 ```ts
-import { createNotificationHandlers } from '@notifykit/express'
+import { createNotificationHandlers } from '@aymenkits/notify-express'
 
 const h = createNotificationHandlers(store, { wrapResponse })
 router.get('/notifications', requireAuth, h.list)
@@ -30,7 +30,7 @@ router.get('/notifications', requireAuth, h.list)
 
 ## Pairs with
 
-- `@authkit/express` middleware upstream
+- `@aymenkits/auth-express` middleware upstream
 
 Kits pair **by shape, never by import** — pass the sibling kit, your own
 service, or a stub in tests.

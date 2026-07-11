@@ -1,5 +1,5 @@
 /**
- * @notifykit/express — the standard in-app notification endpoints
+ * @aymenkits/notify-express — the standard in-app notification endpoints
  * (list, unread, read, read-all). Structural req/res
  * typing (Express 4 + 5), envelope-agnostic, auth-agnostic: by default the
  * user id comes from `req.auth.userId` (authkit middleware), override with
@@ -11,7 +11,7 @@
  *   router.post('/notifications/:id/read', requireAuth, h.markRead)
  *   router.post('/notifications/read-all', requireAuth, h.markAllRead)
  */
-import type { NotificationStore } from '@notifykit/core'
+import type { NotificationStore } from '@aymenkits/notify-core'
 
 export interface MinimalRequest {
   headers: Record<string, unknown>

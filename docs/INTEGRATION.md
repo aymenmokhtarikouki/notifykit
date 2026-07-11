@@ -3,8 +3,8 @@
 ## Install
 
 ```bash
-npm install @notifykit/core
-npm install @notifykit/express          # optional list/unread/read endpoints
+npm install @aymenkits/notify-core
+npm install @aymenkits/notify-express          # optional list/unread/read endpoints
 ```
 
 ## Implement the seams
@@ -31,7 +31,7 @@ Kits pair **by shape, never by import** — every integration point is a
 parameter interface a sibling kit satisfies structurally. Pass the real kit,
 your own service, or a stub in tests.
 
-- `@reviewkit/core` and `@chatkit/core` take this Notifier as their
+- `@aymenkits/review-core` and `@aymenkits/chat-core` take this Notifier as their
   `notifier` parameter as-is (review.received, chat.message_received, …) —
   your renderer maps those event types to copy.
 

@@ -14,8 +14,8 @@ import {
   createInMemoryNotificationStore,
   consoleChannel,
   type TemplateRenderer,
-} from '@notifykit/core'
-import { createNotificationHandlers } from '@notifykit/express'
+} from '@aymenkits/notify-core'
+import { createNotificationHandlers } from '@aymenkits/notify-express'
 
 const store = createInMemoryNotificationStore()
 

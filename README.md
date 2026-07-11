@@ -19,8 +19,8 @@ starts from zero. This kit puts one dispatcher in front of all of it.
 
 | Package | What | Deps |
 | --- | --- | --- |
-| `@notifykit/core` | `createNotifier` dispatcher: in-app record written FIRST (source of truth), then push/email/SMS/realtime fan-out with per-channel **error isolation** (a dead SMTP never blocks the push). Seams: `NotificationStore`, `PreferenceResolver`, `TemplateRenderer` (return `null` to skip a channel per event type), channel senders. Ships structural adapters: `fcmPushSender` (with dead-token pruning), `smtpEmailSender`, `twilioSmsSender`, `socketIoEmitter` — each takes YOUR configured client. | — |
-| `@notifykit/express` | The endpoints every app exposes: list / unread count / mark read / mark all read. Express 4/5 structural typing, envelope-agnostic, auth-agnostic (`req.auth.userId` by default — authkit-compatible — or a custom `getUserId`). | core |
+| `@aymenkits/notify-core` | `createNotifier` dispatcher: in-app record written FIRST (source of truth), then push/email/SMS/realtime fan-out with per-channel **error isolation** (a dead SMTP never blocks the push). Seams: `NotificationStore`, `PreferenceResolver`, `TemplateRenderer` (return `null` to skip a channel per event type), channel senders. Ships structural adapters: `fcmPushSender` (with dead-token pruning), `smtpEmailSender`, `twilioSmsSender`, `socketIoEmitter` — each takes YOUR configured client. | — |
+| `@aymenkits/notify-express` | The endpoints every app exposes: list / unread count / mark read / mark all read. Express 4/5 structural typing, envelope-agnostic, auth-agnostic (`req.auth.userId` by default — authkit-compatible — or a custom `getUserId`). | core |
 
 ## Quick start
 
