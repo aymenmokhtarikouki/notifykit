@@ -1,6 +1,6 @@
 {
   "name": "@notifykit/express",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Express 4/5 handlers for the in-app notification endpoints every app exposes: list, unread count, mark read, mark all read. Envelope-agnostic, structural typing.",
   "license": "UNLICENSED",
   "main": "dist/index.js",
@@ -13,6 +13,14 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@notifykit/core": "0.1.0"
+    "@notifykit/core": "1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aymenmokhtarikouki/notifykit.git",
+    "directory": "packages/express"
   }
 }
