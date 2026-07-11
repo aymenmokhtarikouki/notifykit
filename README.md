@@ -10,10 +10,10 @@ Consume as a **git submodule** at `vendor/notifykit` with `file:` deps.
 
 ## Why it exists
 
-lineo had FCM + Socket.IO + Twilio + nodemailer + a preferences JSONB; yuma
+One production app had FCM + Socket.IO + Twilio + nodemailer + a preferences JSONB; another
 had in-app notifications (list/unread/read-all) + SMTP + Twilio but **no push
 and polled chat**. Same channels, half-overlapping code — and every future app
-starts from zero. This kit unifies lineo and *adds* push + realtime to yuma.
+starts from zero. This kit puts one dispatcher in front of all of it.
 
 ## Packages
 
@@ -59,7 +59,7 @@ npm install && npm run demo   # :4840 — console channels, x-user header as aut
 
 [`contracts/API.md`](contracts/API.md) (endpoint + socket payload shapes for
 Flutter/web) · [`docs/INTEGRATION.md`](docs/INTEGRATION.md) (submodule setup,
-yuma/lineo store recipes, FCM token store, socket auth via authkit).
+store recipes, FCM token store, socket auth via authkit).
 
 ## Deliberately out of v1
 

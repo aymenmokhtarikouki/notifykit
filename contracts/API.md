@@ -1,6 +1,6 @@
 # notifykit — HTTP + socket contract
 
-Payloads may be wrapped in the app envelope (yuma/lineo: `{ "data": … }`).
+Payloads may be wrapped in the app envelope (commonly `{ "data": … }`).
 
 ## In-app endpoints (authed)
 

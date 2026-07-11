@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Shared notification toolkit — one notify() fan-out across the channels every app uses: in-app records (unread/read), FCM push, email, SMS and Socket.IO realtime. Storage/delivery are seams; templates and preferences stay app-side.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "workspaces": [
     "packages/*",
     "examples/*"

@@ -1,42 +1,52 @@
-# Integration guide
+# Integrating notifykit
 
-Same submodule mechanics as the other kits (clustermap-kit INTEGRATION.md has
-the general flow). `git submodule add git@github.com:aymenmokhtarikouki/notifykit.git
-vendor/notifykit` → `npm --prefix vendor/notifykit run setup` → `file:` deps
-for `@notifykit/core` (+ `@notifykit/express`).
+## Install
 
-## yuma_backend (Prisma)
+```bash
+npm install @notifykit/core
+npm install @notifykit/express          # optional list/unread/read endpoints
+```
 
-- `NotificationStore` → the existing notifications model
-  (list/unread/read-all routes already match `@notifykit/express` — swap the
-  controller internals, keep the URLs).
-- Senders: wrap the existing transactionalMailer (`smtpEmailSender`) + Twilio
-  (`twilioSmsSender`).
-- **Push (new capability):** add `fcmTokens String[]` to User (or a
-  DeviceToken model), register tokens from Flutter, implement
-  `DeviceTokenStore` with pruning via `removeTokens`.
-- **Realtime (new capability):** add socket.io, authenticate handshakes with
-  authkit `verifyAccess`, join `user:<id>` rooms, plug `socketIoEmitter(io)`
-  — this also gives live chat later (chat is polled today).
-- Replace ad-hoc "create notification + maybe email" code paths with
-  `notifier.notify(userId, { type, data })`.
+## Implement the seams
 
-## lineo-backend (pg)
+- `NotificationStore` — your in-app notifications table. It is written FIRST
+  and is the source of truth: if this write fails, `notify` rejects and no
+  channel fires.
+- `TemplateRenderer` — your copy/i18n: `(event, channel) → message | null`
+  (null skips that channel for that event type).
+- Channel senders — structural adapters ship for firebase-admin messaging
+  (with dead-token pruning), nodemailer, Twilio and Socket.IO; you pass YOUR
+  configured clients.
+- `PreferenceResolver` — optional per-user channel opt-outs; the preference
+  data stays in your schema.
 
-- `NotificationStore` → notifications table (raw SQL like other stores).
-- `fcmPushSender(admin.messaging(), { tokens })` — `tokensForUser` reads
-  `users.fcm_tokens`, `removeTokens` does the array-remove UPDATE that
-  `fcm.ts` hand-rolls today.
-- `socketIoEmitter(io)` — the Socket.IO server already exists; keep queue
-  events as-is, use notifykit for user-facing notifications.
-- `resolvePreferences` → read `users.notification_preferences` JSONB and map
-  event types to channels.
+## Semantics you can rely on
 
-## Both apps
+Per-channel error isolation: a dead SMTP server never blocks the push; every
+failure is collected in the result and surfaced via `onError`, never thrown.
 
-- Templates: one module per app, `Record<eventType, (event, channel) => RenderedMessage | null>`
-  — this is where copy/i18n lives; the kit never renders text itself.
-- Event types: adopt a `domain.action` convention (`order.accepted`,
-  `queue.your_turn`, `payment.released`).
-- Deploys/CI: `git submodule update --init` + `npm --prefix vendor/notifykit
-  run setup` BEFORE the consumer `npm install`.
+## Pairing with sibling kits
+
+Kits pair **by shape, never by import** — every integration point is a
+parameter interface a sibling kit satisfies structurally. Pass the real kit,
+your own service, or a stub in tests.
+
+- `@reviewkit/core` and `@chatkit/core` take this Notifier as their
+  `notifier` parameter as-is (review.received, chat.message_received, …) —
+  your renderer maps those event types to copy.
+
+## Migrating from an existing implementation
+
+The kits were extracted from production systems, and these rules kept those
+migrations safe:
+
+1. **Never rewrite a working flow in one step.** Keep your endpoint URLs,
+   response envelopes and (for realtime) socket event names byte-identical;
+   swap the implementation underneath, one endpoint at a time.
+2. **Data stays put.** The store seams map onto your existing tables — new
+   capabilities need at most additive columns, never a data migration.
+3. **Delete the superseded code in the same change.** Two implementations of
+   the same behavior is how drift starts.
+4. Where the kit enforces domain rules through policy hooks, your hooks may
+   THROW your app's own error types — the kit re-throws them untouched, so
+   your API's error contract survives the swap.

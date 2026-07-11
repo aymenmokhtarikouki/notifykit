@@ -1,6 +1,6 @@
 /**
- * @notifykit/express — the in-app notification endpoints (the exact routes
- * yuma exposes today: list, unread, read, read-all). Structural req/res
+ * @notifykit/express — the standard in-app notification endpoints
+ * (list, unread, read, read-all). Structural req/res
  * typing (Express 4 + 5), envelope-agnostic, auth-agnostic: by default the
  * user id comes from `req.auth.userId` (authkit middleware), override with
  * `getUserId` for any other auth setup.

@@ -46,7 +46,7 @@ export interface NotificationStore {
 
 /**
  * Which channels a user gets for an event type. Preference DATA stays in the
- * app (lineo: users.notification_preferences JSONB); this is just the lookup.
+ * app (e.g. a JSONB preferences column); this is just the lookup.
  * Omit to send through every configured channel.
  */
 export type PreferenceResolver = (
